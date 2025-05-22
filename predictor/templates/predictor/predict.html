@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>House Price Predictor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background image */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: url("{% static 'images/background.png' %}") no-repeat center center/cover;
+      filter: blur(6px);
+      z-index: -1;
+      opacity: 0.8;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 80px auto;
+      padding: 40px;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #2c3e50;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    input[type="number"] {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    input[type="number"]:focus {
+      border-color: #3498db;
+      outline: none;
+      box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+    }
+
+    button {
+      padding: 14px;
+      background: #2980b9;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1e6aa6;
+    }
+
+    .result-box {
+      margin-top: 20px;
+      background: #d6ecff;
+      padding: 15px;
+      border-radius: 12px;
+      color: #2c3e50;
+      font-size: 1.2rem;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🏠 House Price Predictor</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <input type="number" name="bhk" step="1" required placeholder="Number of Bedrooms (BHK)">
+    <input type="number" name="sqft" step="0.1" required placeholder="Total Area (Sq. Ft)">
+    <button type="submit">Predict Price</button>
+  </form>
+
+  {% if prediction %}
+    <div class="result-box">
+      Predicted Price: {{ prediction }}
+    </div>
+  {% endif %}
+</div>
+
+</body>
+</html>
