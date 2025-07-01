@@ -5,6 +5,7 @@ A machine learning-powered Django web application that predicts house prices bas
 
 ## 🚀 Features
 
+
 - 🔢 Predicts house prices using a trained regression model
 - 🎨 Responsive and modern user interface
 - 📷 Background theme with construction-related imagery
