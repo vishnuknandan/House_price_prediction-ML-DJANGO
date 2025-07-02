@@ -8,7 +8,7 @@ A machine learning-powered Django web application that predicts house prices bas
 
 - 🔢 Predicts house prices using a trained regression model
 - 🎨 Responsive and modern user interface
-- 📷 Background theme with construction-related imagery
+- 📷 Background theme with construction-related imagery 
 - 📥 Form input with real-time visual feedback
 - 🧠 Built using Django and Scikit-learn
 
